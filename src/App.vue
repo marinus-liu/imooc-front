@@ -5,7 +5,7 @@
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-inline">
           <Field type="email" name="name" placeholder="请输入标题" autocomplete="off"
-            class="layui-input"  rules="required|email"/>
+            class="layui-input"  rules="required|email" v-model="name"/>
         </div>   
    <div class="error layui-form-mid"> 
    
@@ -17,7 +17,7 @@
         <label class="layui-form-label">密码</label>
         <div class="layui-input-inline">
           <Field type="password" name="password" placeholder="请输入密码" autocomplete="off"
-            class="layui-input" rules="required"/>
+            class="layui-input" rules="required" v-model="password"/>
         </div>
           <div class="error layui-form-mid"> 
     {{ errors.password }}
@@ -29,7 +29,7 @@
         <label class="layui-form-label">验证码</label>
         <div class="layui-input-inline">
           <Field type="text" name="code" placeholder="请输入验证码" autocomplete="off"
-            class="layui-input" rules="required"/>
+            class="layui-input" rules="required" v-model="code"/>
         </div>
           
         <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()"></div>
@@ -101,7 +101,7 @@ export default {
     checkForm (values) {
       console.log(values)
        console.log(JSON.stringify(values, null, 2));
-     /*  this.errorMsg = []
+      this.errorMsg = []
       if(!this.name){
         this.errorMsg.push('用户名不能为空')
       }
@@ -111,21 +111,9 @@ export default {
       if(!this.password){
         this.errorMsg.push('密码不能为空')
       }
- */      console.log(this.errorMsg)
+      console.log(this.errorMsg)
     },
-    validateEmail(value) {
-      // if the field is empty
-      if (!value) {
-        return 'This field is required';
-      }
-      // if the field is not a valid email
-      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-      if (!regex.test(value)) {
-        return 'This field must be a valid email';
-      }
-      // All is good
-      return true;
-    },
+    
   }
 }
 </script>
