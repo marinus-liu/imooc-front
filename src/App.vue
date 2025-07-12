@@ -60,7 +60,11 @@ configure({
         name:'用户名',
         password:'密码',
         code:'验证码'
-      }
+      },
+      messages: {
+        required: ' {field} 不能为空',
+        email: ' {field} 格式不对'
+      },
   }),
 });
 
