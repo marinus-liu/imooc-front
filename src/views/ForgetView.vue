@@ -51,26 +51,8 @@
 
 <script>
 import axios from "axios"
-import { Field, Form, defineRule, configure } from 'vee-validate'
-import { required, email } from '@vee-validate/rules';
-import { localize } from '@vee-validate/i18n';
-import zh from '@vee-validate/i18n/dist/locale/zh_CN.json';
+import { Field, Form } from 'vee-validate'
 
-defineRule('required', required);
-defineRule('email', email);
-localize({ zh });
-configure({
-    generateMessage: localize('zh', {
-        names: {
-            name: '用户名',
-            code: '验证码'
-        },
-        messages: {
-            required: ' {field} 不能为空',
-            email: ' {field} 格式不对'
-        },
-    }),
-});
 
 export default {
     name: 'forget',

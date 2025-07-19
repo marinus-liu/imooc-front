@@ -13,15 +13,17 @@
 
         <Form class="layui-form layui-form-pane" v-slot="{ errors }" @submit="checkForm">
           <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
+            <div class="layui-row">
+            <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
-              <Field type="email" name="name" placeholder="请输入标题" autocomplete="off" class="layui-input"
-                rules="required|email" v-model="name" />
+              <Field type="email" name="username" placeholder="请输入标题" autocomplete="off" class="layui-input"
+                rules="required|email" v-model="username" />
             </div>
              <div class="layui-form-mid " > 将会成为您唯一的登入名</div>
+             </div>
             <div class="error ">
 
-              {{ errors.name }}
+              {{ errors.username }}
 
             </div>
           </div>
@@ -38,12 +40,14 @@
 
           </div>
           <div class="layui-form-item">
+             <div class="layui-row">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-inline">
               <Field type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input"
-                rules="required|between:0,10" v-model="password" />
+                rules="required|min:6|max:16" v-model="password" />
             </div>
             <div class="layui-form-mid " > 6到16个字符</div>
+            </div>
             <div class="error ">
               {{ errors.password }}
 
@@ -54,15 +58,16 @@
             <label class="layui-form-label">确认密码</label>
             <div class="layui-input-inline">
               <Field type="password" name="confirmation" placeholder="请输入密码" autocomplete="off" class="layui-input"
-                rules="confirmed:password" v-model="confirmation" />
+                rules="required|confirmed:@password" v-model="confirmation" />
             </div>
             <div class="error layui-form-mid">
-              {{ errors.password }}
+              {{ errors.confirmation }}
 
             </div>
 
           </div>
           <div class="layui-form-item">
+            <div class="layui-row">
             <label class="layui-form-label">验证码</label>
             <div class="layui-input-inline">
               <Field type="text" name="code" placeholder="请输入验证码" autocomplete="off" class="layui-input"
@@ -70,6 +75,7 @@
             </div>
 
             <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()"></div>
+            </div>
             <div class="error ">
               {{ errors.code }}
 
@@ -86,31 +92,7 @@
 
 <script>
 import axios from "axios"
-import { Field, Form, defineRule, configure } from 'vee-validate'
-// import { required, email } from '@vee-validate/rules';
-import { localize } from '@vee-validate/i18n';
-import zh from '@vee-validate/i18n/dist/locale/zh_CN.json';
-import { all } from '@vee-validate/rules';
-Object.entries(all).forEach(([name, rule]) => {
-  defineRule(name, rule);
-});
-// defineRule('required', required);
-// defineRule('email', email);
-localize({ zh });
-configure({
-  generateMessage: localize('zh', {
-    names: {
-      name: '用户名',
-      password: '密码',
-      confirmation: '确认密码',
-      code: '验证码'
-    },
-    messages: {
-      required: ' {field} 不能为空',
-      email: ' {field} 格式不对'
-    },
-  }),
-});
+import { Field, Form } from 'vee-validate'
 
 export default {
   name: 'login',

@@ -16,12 +16,12 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline">
-                            <Field type="email" name="name" placeholder="请输入标题" autocomplete="off" class="layui-input"
-                                rules="required|email" v-model="name" />
+                            <Field type="email" name="username" placeholder="请输入标题" autocomplete="off" class="layui-input"
+                                rules="required|email" v-model="username" />
                         </div>
                         <div class="error layui-form-mid">
 
-                            {{ errors.name }}
+                            {{ errors.username }}
 
                         </div>
                     </div>
@@ -38,13 +38,16 @@
 
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-row">
+<label class="layui-form-label">验证码</label>
                         <div class="layui-input-inline">
                             <Field type="text" name="code" placeholder="请输入验证码" autocomplete="off" class="layui-input"
-                                rules="required" v-model="code" />
+                                rules="required|length:4" v-model="code" />
                         </div>
 
                         <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()"></div>
+                        </div>
+                        
                         <div class="error ">
                             {{ errors.code }}
 
@@ -69,27 +72,8 @@
 
 <script>
 import axios from "axios"
-import { Field, Form, defineRule, configure } from 'vee-validate'
-import { required, email } from '@vee-validate/rules';
-import { localize } from '@vee-validate/i18n';
-import zh from '@vee-validate/i18n/dist/locale/zh_CN.json';
+import { Field, Form} from 'vee-validate'
 
-defineRule('required', required);
-defineRule('email', email);
-localize({ zh });
-configure({
-    generateMessage: localize('zh', {
-        names: {
-            name: '用户名',
-            password: '密码',
-            code: '验证码'
-        },
-        messages: {
-            required: ' {field} 不能为空',
-            email: ' {field} 格式不对'
-        },
-    }),
-});
 
 export default {
     name: 'reg',
