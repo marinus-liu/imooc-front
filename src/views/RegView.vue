@@ -95,7 +95,7 @@ import axios from "axios"
 import { Field, Form } from 'vee-validate'
 
 export default {
-  name: 'login',
+  name: 'reg',
   components: {
     Form,
     Field
