@@ -96,20 +96,22 @@ import { Field, Form } from 'vee-validate'
 
 export default {
   name: 'reg',
-  components: {
-    Form,
-    Field
-  },
   data() {
     return {
       svg: '',
-      name: '',
+      username: '',
+      nickname:'',
       code: '',
       password: '',
       confirmation:'',
       errorMsg: []
     }
   },
+  components: {
+    Form,
+    Field
+  },
+  
   mounted() {
     this.getCaptcha()
   },
