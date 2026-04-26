@@ -1,7 +1,7 @@
 <template>
     <div id="footer">
 <p>
-    <a href="http://imooc.com" target="_blank" >Imooc 社区 2017 &copy;</a>
+    <a href="#" target="_blank" >Imooc 社区 2017 &copy;</a>
     <a href="http://imooc.com" target="_blank" > layui.com</a>
 </p>
 <p>

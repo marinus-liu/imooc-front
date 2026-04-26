@@ -82,7 +82,7 @@ export default {
     methods: {
         _getCode() {
             getCaptchaCode().then((res) => {
-                // console.log(res)
+                console.log(res)
                 if (res.code === 200) {
                         this.svg = res.data
                     }

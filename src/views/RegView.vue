@@ -71,7 +71,7 @@
             <label class="layui-form-label">验证码</label>
             <div class="layui-input-inline">
               <Field type="text" name="code" placeholder="请输入验证码" autocomplete="off" class="layui-input"
-                rules="required" v-model="code" />
+                rules="required:length:4" v-model="code" />
             </div>
 
             <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()"></div>
@@ -128,8 +128,8 @@ export default {
       })
     },
     checkForm(values) {
-      console.log(values)
-      console.log(JSON.stringify(values, null, 2));
+      // console.log(values)
+      // console.log(JSON.stringify(values, null, 2));
       this.errorMsg = []
       if (!this.name) {
         this.errorMsg.push('用户名不能为空')
