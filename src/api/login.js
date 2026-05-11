@@ -1,5 +1,7 @@
-import axios from "axios"
-const getCaptchaCode = async() =>{
+// import axios from "axios"
+import axios from '@/utils/axios'
+
+/*const getCaptchaCode = async() =>{
     let res = '' ; 
     try{
         res = await axios.get('/getCaptcha')
@@ -11,7 +13,11 @@ const getCaptchaCode = async() =>{
     }
     return res;
            
+}*/
+const getCaptchaCode  = () => {
+    return axios.get('/getCaptcha')
 }
+
 const forget = async (option) => { 
     let res = '' ; 
     try{
