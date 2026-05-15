@@ -1,5 +1,5 @@
 // import axios from "axios"
-import axios from '@/utils/axios'
+import axios from '@/utils/request'
 
 /*const getCaptchaCode = async() =>{
     let res = '' ; 
