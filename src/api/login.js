@@ -18,7 +18,7 @@ const getCaptchaCode  = () => {
     return axios.get('/getCaptcha')
 }
 
-const forget = async (option) => { 
+/*const forget = async (option) => { 
     let res = '' ; 
     try{
         res = await axios.post('/forget', {
@@ -32,6 +32,11 @@ const forget = async (option) => {
     }
     return res;
            
+}*/
+const forget = (option) =>{
+    return axios.post('/forget', {
+        ...option
+    })
 }
 
  export { getCaptchaCode , forget }
