@@ -2,9 +2,16 @@
 
 //对错误的统一处理
 import axios from 'axios'
+import config from '@/config'
 import  errHandle from './errHandle'
 
-const instance = axios.create()
+const instance = axios.create({
+  baseURL: process.env.NODE_ENV === 'development' ? config.baseUrl.dev : config.baseUrl.pro,
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  timeout: 10000
+})
 
 // 清求拦截器
 instance.interceptors.request.use( (config) =>{
