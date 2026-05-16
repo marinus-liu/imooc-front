@@ -68,6 +68,7 @@
 <script>
 import { getCaptchaCode } from '@/api/login'
 import { Field, Form } from 'vee-validate'
+import { v4 as uuidv4 } from "uuid";
 
 export default {
     name: 'login',
@@ -85,11 +86,22 @@ export default {
         Field
     },
     mounted() {
-        this._getCode()
+        let sid = ''
+        if (localStorage.getItem('sid')){
+            sid = localStorage.getItem('sid')
+        }else {
+            sid = uuidv4()
+            localStorage.setItem('sid', sid)
+        }
+        this.$store.commit('setSid', sid)
+        console.log('sid is :' + sid)
+
+        this._getCode(sid)
     },
     methods: {
         _getCode() {
-            getCaptchaCode().then((res) => {
+            const sid = this.$store.state.sid
+            getCaptchaCode(sid).then((res) => {
                 // console.log(res)
                 if (res.code === 200) {
                         this.svg = res.data

@@ -26,7 +26,7 @@ class HttpRequest {
 
         // 清求拦截器
     instance.interceptors.request.use( (config) =>{
-        console.log("config: "+ config)
+        // console.log("config: "+ config)
         // Do something before the request is sent
         return config;
       },

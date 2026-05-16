@@ -14,9 +14,15 @@ import axios from '@/utils/request'
     return res;
            
 }*/
-const getCaptchaCode  = () => {
-    return axios.get('/getCaptcha')
+const getCaptchaCode  = (sid ) => {
+    return axios.get('/getCaptcha', {
+        params: {
+            sid: sid
+        }
+    })
+    // return axios.get('/getCaptcha?sid=' + sid)
 }
+
 
 /*const forget = async (option) => { 
     let res = '' ; 
